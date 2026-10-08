@@ -4,6 +4,11 @@ import com.spa.manager.auth.domain.exception.CorreoYaRegistradoException;
 import com.spa.manager.auth.domain.exception.CredencialesInvalidasException;
 import com.spa.manager.auth.domain.exception.UsuarioInactivoException;
 import com.spa.manager.auth.domain.exception.UsuarioNoEncontradoException;
+import com.spa.manager.calificaciones.domain.exception.CalificacionNoEncontradaException;
+import com.spa.manager.facturas.domain.exception.FacturaNoEncontradaException;
+import com.spa.manager.reservas.domain.exception.HorarioNoDisponibleException;
+import com.spa.manager.reservas.domain.exception.ReservaNoEncontradaException;
+import com.spa.manager.servicios.domain.exception.ServicioNoEncontradoException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +29,31 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UsuarioNoEncontradoException.class)
     public ResponseEntity<Map<String, Object>> handleUsuarioNoEncontrado(UsuarioNoEncontradoException ex) {
         return error(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(ServicioNoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> handleServicioNoEncontrado(ServicioNoEncontradoException ex) {
+        return error(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(ReservaNoEncontradaException.class)
+    public ResponseEntity<Map<String, Object>> handleReservaNoEncontrada(ReservaNoEncontradaException ex) {
+        return error(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(FacturaNoEncontradaException.class)
+    public ResponseEntity<Map<String, Object>> handleFacturaNoEncontrada(FacturaNoEncontradaException ex) {
+        return error(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(CalificacionNoEncontradaException.class)
+    public ResponseEntity<Map<String, Object>> handleCalificacionNoEncontrada(CalificacionNoEncontradaException ex) {
+        return error(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    @ExceptionHandler(HorarioNoDisponibleException.class)
+    public ResponseEntity<Map<String, Object>> handleHorarioNoDisponible(HorarioNoDisponibleException ex) {
+        return error(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
     @ExceptionHandler(CorreoYaRegistradoException.class)
