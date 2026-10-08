@@ -16,4 +16,15 @@ public class LogMapper {
         entity.setFechaHora(log.getFechaHora());
         return entity;
     }
+
+    public Log toDomain(LogEntity entity) {
+        Log log = new Log();
+        log.setIdLog(entity.getIdLog());
+        log.setTipo(entity.getTipo());
+        log.setIdUsuario(entity.getIdUsuario());
+        log.setDescripcion(entity.getDescripcion());
+        log.setIp(entity.getIp());
+        log.setFechaHora(entity.getFechaHora());
+        return log;
+    }
 }
